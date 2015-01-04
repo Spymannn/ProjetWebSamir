@@ -1,4 +1,4 @@
-<h2 style="text-align: center;"> liste des séries </h2>
+<h2 style="text-align: center;"> Séries</h2>
 
 <p style="text-align: center;">
     Imprimer la liste complète dès maintenant en cliquant ici :

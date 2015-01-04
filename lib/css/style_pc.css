@@ -46,6 +46,26 @@ a{
     width: 450px;
     //height: 200px;
 }
+fieldset#fieldset_login {
+    border:2px solid white;				
+    border-radius:8px;	
+    padding:50px;
+}
+#logage{
+    width:400px;
+    margin-left: 30%;
+    background-color:rgb(118,131,167);
+    color:black;
+    padding:10px;
+    border:1px solid #AAA;
+    z-index:200;
+    -moz-border-radius: 10px;
+    -moz-box-shadow: 0 0 10px #aaa;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #aaa;
+}
+
+
 /***** Gabarit ****/
 #pub{
     height: 350px;

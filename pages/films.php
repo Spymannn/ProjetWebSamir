@@ -1,4 +1,4 @@
-<h2 style="text-align: center;">liste films ici </h2>
+<h2 style="text-align: center;">Films </h2>
 
 <p style="text-align: center;">
     Imprimer la liste complète dès maintenant en cliquant ici :
