@@ -19,7 +19,7 @@ $filmRech = $movie->getFilm($s);
   <div class="panel-body" style="text-align: center;">
       Bande annonce
       <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="videos/<?php print $s;?>.avi">test</iframe>
+    <iframe class="embed-responsive-item" src="videos/<?php print $s;?>.avi" alt="video introuvable">test</iframe>
 </div>
   </div>
 </div>
