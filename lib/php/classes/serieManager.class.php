@@ -30,6 +30,19 @@ class SerieManager {
         }
         return $_serieArray;
     }
+    public function getListeSerieLimite($nbreSerie,$debut){
+        $query="select * from serie order by idserie asc LIMIT :limit offset :debut";
+        $resultset = $this->_db->prepare($query);
+        $resultset->bindValue(1,$nbreSerie,PDO::PARAM_INT);
+        $resultset->bindValue(2,$debut,PDO::PARAM_INT);
+        $resultset->execute();
+       
+        $nbr=$resultset->rowCount();
+        while($data = $resultset->fetch()) {
+            $_serieArray[] = new Serie($data);
+        }
+        return $_serieArray;
+    }
     
     public function getSerie($id){
         $query="select * from serie where idserie = :idserie";

@@ -25,120 +25,94 @@ else{
     $s = 1;
 }
 
-
-
-//Il faut à nouveau aller rechercher les informations ici
 $mg = new SerieManager($db);
 $data = $mg->getListeSerie();
-$nbreSerie = count($data);
 
 $sais = new SaisonManager($db);
 $saisons = $sais->getListeSaison();
 $nbreSaisonTot = count($saisons);
 
 
-
-
-if(isset($_GET['tabSerie'])){
-    $tab = $_GET['tabSerie'];
+//recupération de la limite
+if(isset($_GET['numPage']))
+{
+   /*echo "<br/>".$_GET['descr'];*/
+  $pageCourante=$_GET['numPage'];
 }
-else if(isset($_POST['tabSerie'])){
-   $tab=$_POST['tabSerie'];
+else if(isset($_POST['numPage'])){
+   $pageCourante=$_POST['numPage'];
 }
 else{
-    $tab = $data;
+    $pageCourante = 1;
 }
+//Il faut à nouveau aller rechercher les informations ici
 
+$nbreParPage = 6;
+$nbreSerieTot = count($data);
+$nbrePage = ceil($nbreSerieTot / $nbreParPage);
+ 
+$tabAffiche = $mg->getListeSerieLimite($nbreParPage,($pageCourante-1)*$nbreParPage);
+//print count($tabAffiche);
 
-$nbrePage = 0;
 $nbreSaisonParSerie = array();
-for ($j = 0; $j < $nbreSerie; $j++) {
+for ($j = 0; $j < count($tabAffiche); $j++) {
 
-    $saisonsSerie1 = $sais->getNbreSaisonSerie($data[$j]->idserie);
-    //print $saisonsSerie1;
+    $saisonsSerie1 = $sais->getNbreSaisonSerie($tabAffiche[$j]->idserie);
     $nbreSaisonParSerie[$j] = $saisonsSerie1;
 }
 
-if(isset($_GET['saisonsParSerie'])){
-    $saisonPSerie = $_GET['saisonsParSerie'];
-}
-else if(isset($_POST['saisonsParSerie'])){
-   $saisonPSerie=$_POST['saisonsParSerie'];
-}
-else{
-    $saisonPSerie = $nbreSaisonParSerie;
-}
-
-
-
-   
-    
-if($nbreSerie<=10){
-        for ($i = $s; $i < $nbreSerie; $i++) {
-            ?>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="badge"><attr title="nombre de saisons"> <?php print $nbreSaisonParSerie[$i]; ?></attr></span>
-                    <a href="index.php?page=saisons&amp;numSaison=<?php print $tab[$i]->idserie; ?>"><span id="serieTitre"><?php print $tab[$i]->nomserie; ?></span></a>
-
-
-                </li>
-            </ul>
-
-
-            <?php
-        }
-    
-}
-else{
-    if (isset($nbreSerie)) {
-        for ($i = $s; $i < $s+9; $i++) {
-            ?>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="badge"><attr title="nombre de saisons"> <?php print $saisonPSerie[$i]; ?></attr></span>
-
-                    <a href="index.php?page=saisons&amp;numSaison=<?php print $data[$i]->idserie; ?>"><span id="serieTitre"><?php print $data[$i]->nomserie; ?></span></a>
-
-
-                </li>
-            </ul>
-
-
-            <?php
-        }
-    }
-    
-    
-    
-    
-    
-    $nbrePage = ($nbreSerie / 10) + 1;
-
-    ?>
-    <nav style="text-align: center;">
-        <ul class="pagination">
-            <li>
-                <a href="index.php?page=series&amp;idLastSerie=<?php print $s;?>&tabSerie=<?php $tab;?>&saisonsParSerie=<?php $saisonPSerie;?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-    <?php
-    for ($i = 1; $i < $nbrePage; $i++) {
-        ?>
-                <li><a href="#"><?php print $i; ?></a></li>
-                <?php
-            }
-            ?>
-            <li>
-                <a href=index.php?page=series&amp;idLastSerie=<?php print $s+10;?>&tabSerie=<?php $tab;?>&saisonsParSerie=<?php $saisonPSerie;?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <?php
-}
+//var_dump($tabAffiche);
+for($i=0;$i<count($tabAffiche);$i++){
 ?>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge"><attr title="nombre de saisons"> <?php print $nbreSaisonParSerie[$i]; ?></attr></span>
+        <a href="index.php?page=saisons&amp;numSaison=<?php print $tabAffiche[$i]->idserie; ?>"><span id="serieTitre"><?php print $tabAffiche[$i]->nomserie; ?></span></a>
+
+    </li>
+</ul>
+<?php }
+?>
+
+
+<nav style="text-align: center;">
+    <ul class="pagination">
+        <?php
+        if($pageCourante>1){ ?>
+        <li>
+            <a href="index.php?page=series&amp;numPage=<?php print $pageCourante-1;?>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <?php
+        }
+        for ($i = 1; $i <= $nbrePage; $i++) {
+            ?>
+            <li><a href="index.php?page=series&amp;numPage=<?php print $i;?>"><?php print $i; ?></a></li>
+            <?php
+        }
+        if($pageCourante!=$nbrePage){
+        ?>
+        <li>
+            <a href="index.php?page=series&amp;numPage=<?php print $pageCourante+1;?>" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        <?php } ?>
+    </ul>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
