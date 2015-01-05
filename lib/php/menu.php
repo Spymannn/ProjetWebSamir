@@ -14,7 +14,7 @@
       Mon Compte <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-       <li role="presentation"><a href="#">Mes favoris</a></li>
+       <li role="presentation"><a href="index.php?page=mesFavoris">Mes favoris</a></li>
        <li role="menu"><a href="lib/php/deconnexion.php">Deconnexion</a></li>
 
 

@@ -29,9 +29,11 @@ class FavorisFilmManager extends FavorisFilm {
         } catch (PDOException $e) {
             print $e->getMessage();
         }
-
+        $_favorisFilmsArray=array();
+        if($resultset->rowCount()>0){
         while ($data = $resultset->fetch()) {
             $_favorisFilmsArray[] = new FavorisFilm($data);
+        }
         }
         return $_favorisFilmsArray;
     }

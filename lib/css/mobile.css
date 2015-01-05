@@ -45,3 +45,10 @@ header{
 #apropos{
     width:80%;
 }
+#logage{
+    width: 80%;
+    margin-left: 0%;
+}
+#fieldset_login input{
+    width: 80%;
+}
