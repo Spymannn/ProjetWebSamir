@@ -11,7 +11,7 @@
  *
  * @author Spymannn
  */
-class TypeManager {
+class TypeManager extends Type{
     private $_db;
     private $_typeArray=array();
     

@@ -28,3 +28,20 @@ header{
     clear: both;
     width: 100%;
 }
+#megaBas{
+    clear: both;
+    width: 100%;
+}
+#megaBas ul{
+    clear: both;
+    width: 100%;
+}
+#megaBas ul li{
+    font-size: 50%;
+}
+#planSite{
+    width: 80%;
+}
+#apropos{
+    width:80%;
+}

@@ -11,7 +11,7 @@
  *
  * @author Spymannn
  */
-class SaisonManager {
+class SaisonManager extends Saison{
     //put your code  
     private $_db;
     private $_saisonArray=array();

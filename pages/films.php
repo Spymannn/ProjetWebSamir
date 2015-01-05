@@ -7,7 +7,35 @@
     
     </a>
 </p>
+
+
+
+
 <?php
+
+
+if(isset($_SESSION['user']) && isset($_GET['idFavorisFilm'])) {
+    $fav = new FavorisFilmManager($db);
+
+        $retour = $fav->addFavoris($_SESSION['user'], $_GET['idFavorisFilm']);
+        if($retour==1){
+            ?>
+        <script>alert("Favoris enregistré");</script>
+        <?php
+        }
+        else if ($retour==2) {
+            ?>
+        <script>alert("Déjà dans les favoris");</script>
+        <?php
+        }    
+        else{
+            ?>
+        <script>alert("Erreur ajout favoris");</script>
+        <?php
+        }
+    
+}
+
 //Il faut à nouveau aller rechercher les informations ici
 $mg = new FilmManager($db);
 $data = $mg->getListeFilm();
@@ -107,10 +135,14 @@ for ($i = 0; $i < $nbreFilm; $i++) {
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li><a href="index.php?page=descFilm&amp;idFilm=<?php print $data[$i]->idfilm;?>">Description du film</a></li>
-                                                            <li class="divider"></li>
-                                                            <!-- if pas déjà dans ses favoris et user là -->
-                                                            <li><a href="#">Ajouter à ses favoris</a></li>
                                                             
+                                                            <?php if(isset($_SESSION['user'])){?>
+                                                            <li class="divider"></li>
+                                                            <li>
+
+                                                                <a href="index.php?page=films&amp;idFavorisFilm=<?php print $data[$i]->idfilm;?>">Ajouter à ses favoris</a>
+                                                            </li>
+                                                            <?php } ?>
                                                         </ul>
                                                         </div> 
                                                         <!-- ****** -->

@@ -11,7 +11,7 @@
  *
  * @author Spymannn
  */
-class FilmManager {
+class FilmManager extends Film{
      private $_db;
     private $_filmArray=array();
     
@@ -46,7 +46,7 @@ class FilmManager {
      public function getListeFilmRecherche($nom){
         $query="select * from film where upper(titrefilm) LIKE upper(:titrefilm)";
         $resultset = $this->_db->prepare($query);
-        $resultset->bindValue(1,$nom,PDO::PARAM_INT);
+        $resultset->bindValue(1,$nom,PDO::PARAM_STR);
         $resultset->execute();
        
         $_filmArray = array();

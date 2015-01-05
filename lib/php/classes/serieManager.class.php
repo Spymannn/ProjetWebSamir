@@ -11,7 +11,7 @@
  *
  * @author Spymannn
  */
-class SerieManager {
+class SerieManager extends Serie{
      private $_db;
     private $_serieArray=array();
     

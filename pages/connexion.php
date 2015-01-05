@@ -10,6 +10,10 @@
           alert("Mot de passe manquant !");
           return false;
       }
+      else if(document.form_auth.password.value =="" && document.form_auth.login.value ==""){
+          alert("Mot de passe et login manquant !");
+          return false;
+      }
       else {
         return true;
       }
@@ -19,13 +23,19 @@
     </script>
 <?php
 if(isset($_POST['submit_login'])) {
-    /*$mg = new Login($db);
-    $retour=$mg->isAdmin($_POST['login'],$_POST['password']);
+    $mg = new UserManager($db);
+    $retour=$mg->isUser($_POST['login'],md5($_POST['password']));
     if($retour==1) {
-        $_SESSION['admin']=1;
-        $message="Authentifié!";
-        header('Location: http://localhost/pension_portable/admin/index.php');
-    } */
+        $user = $mg->getUser($_POST['login']);
+        $_SESSION['user']=$user[0]->iduser;
+        $message="Authentifié!".$user[0]->pseudouser;
+        print $client[0]->pseudouser;
+        /*ici on fait redirection*/
+        header('Location: http://localhost/MovieShow/index.php?page=accueil');
+    } 
+    else {
+        $message="Données incorrectes";
+    }
 }
 ?>
 

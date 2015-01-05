@@ -159,3 +159,11 @@ footer {
         background-color: white;
 	color : rgb(118,131,167);
 }
+
+#planSite a{
+    color: black;
+}
+#planSite a:hover{
+    color: rgb(118,131,167);
+    text-decoration: none;
+}

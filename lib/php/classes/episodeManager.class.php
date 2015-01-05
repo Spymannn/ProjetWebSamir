@@ -11,7 +11,7 @@
  *
  * @author Spymannn
  */
-class EpisodeManager {
+class EpisodeManager extends Episode{
     //put your code  
     private $_db;
     //private $_episodeArray=array();

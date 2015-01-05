@@ -33,6 +33,7 @@ $nomType = $type->getNomType($serie[0]->idtype);
 ?>
 <h1 style="text-align: center;"><?php print $serie[0]->nomserie; ?></h1>
 
+
 <img src="images/serie/<?php print $serie[0]->idserie; ?>.jpg" alt="<?php print $serie[0]->nomserie; ?>" id="imageSerieSaison" style="border: 1px #000 solid;"/>
 <div id="typeGroupe">
 

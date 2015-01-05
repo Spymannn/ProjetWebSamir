@@ -22,21 +22,28 @@ foreach (glob('lib/js/jquery/*.js') as $js) {
 
         <title>Movie Show</title>
         <link rel="icon" type="image/png" href="./images/logo.ico" />
+        
+        
+         <?php
+        foreach ($fichierJs as $js) {
+            ?><script type="text/javascript" src="<?php print $js; ?>"></script>
+            <?php
+        }
+        ?>
+        <script type="text/javascript" src="lib/js/fonctionsJQuery.js"></script>     
 
 
 <?php
-$jour = date("d");
 $mois = date("m");
-//$heure = date("H:i");
 if (/* $mois == 12 OR */ $mois == 1 OR $mois == 2) {
     ?>
             <script type="text/javascript" src="lib/js/snowstorm-min.js"></script>
             <script>
 
-                snowStorm.snowColor = '#eeeeff'; // blue-ish snow!?
-                snowStorm.flakesMaxActive = 150;  // show more snow on screen at once
+                snowStorm.snowColor = '#eeeeff'; 
+                snowStorm.flakesMaxActive = 150;  
                 snowStorm.flakesMax = 150;
-                snowStorm.useMeltEffect = true; // let the snow flicker in and out of view
+                snowStorm.useMeltEffect = true; 
                 snowStorm.autoStart = true;
                 snowStorm.animationInterval = 30;
             </script>        
@@ -44,12 +51,8 @@ if (/* $mois == 12 OR */ $mois == 1 OR $mois == 2) {
 
 <?php }
 ?>
-
-
-
-
-
-        <!-- Bootstrap -->
+           
+            <!-- Bootstrap -->
         <link href="lib/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- css -->
@@ -95,6 +98,7 @@ if (file_exists('./lib/php/menu.php')) {
             <!-- pub -->
 
             <aside id="pub">
+
 <?php
 if (file_exists('./pages/pub.php')) {
     include './pages/pub.php';
