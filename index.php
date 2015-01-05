@@ -117,12 +117,25 @@ $chemin = './pages/' . $_SESSION['page'] . '.php';
 if (file_exists($chemin)) {
     include ($chemin);
 }
-?>                      
+?>   
+                   
                 </div>	
             </section>
         </div>
-
-
+ <div id="megaBas">
+	
+	<?php
+	if(file_exists('./lib/php/menuBas.php'))
+	{
+		include './lib/php/menuBas.php';
+	}
+	else
+	{
+		echo "le fichier n'existe pas !";
+	}
+   
+   ?>
+ </div>
 
         <footer>Editeur programmeur samir.hanini@condorcet.be MovieShow</footer>
 

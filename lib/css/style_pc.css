@@ -84,7 +84,7 @@ fieldset#fieldset_login {
     margin-right: 200px;
     margin-top: 40px;
     margin-left: 20px;
-    margin-bottom: 20px;
+   // margin-bottom: 20px;
     
     min-height: 370px;//min heignt = la taille minimum de ma pub
 }
@@ -106,11 +106,56 @@ footer {
     margin:0 auto; 
     text-align:center;
     padding-right:15px;
-    padding-top:1%;
+    padding-top:5px;
+    margin-bottom: 5px;
 }
 
 /**** Coloration *****/
 #serieTitre{
     color:#333;
     
+}
+
+/**** menu bas ****/
+
+#megaBas
+{
+	clear : both;
+	width : 1000px;
+	margin: auto;
+	//margin-bottom : 0px;
+	height : 50px;
+	text-align : left;
+	//color : black;
+	background-color : rgb(118,131,167);
+	letter-spacing : 3px;
+}
+#megaBas ul
+{
+	list-style : none;
+}
+#megaBas ul li
+{
+	display : inline;
+	
+	
+	margin : 10px;
+	padding : 5px;
+	font-size : 80%;	
+}
+#megaBas ul li a
+{
+	/*color : black;*/
+	color : white;
+	
+}
+#megaBas a:link
+{
+	text-decoration : none;
+}
+#megaBas ul li a:hover
+{
+	/*color : white;*/
+        background-color: white;
+	color : rgb(118,131,167);
 }
